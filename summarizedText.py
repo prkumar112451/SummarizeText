@@ -7,6 +7,10 @@ app = Flask(__name__)
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
 model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
+@app.route('/api/greeting', methods=['GET'])
+def get_greeting():
+    return 'Hi from Python'
+    
 # Endpoint for text summarization
 @app.route('/summarize', methods=['POST'])
 def summarize_text():
