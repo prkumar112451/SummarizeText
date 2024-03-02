@@ -5,7 +5,9 @@ app = Flask(__name__)
 
 # Load BART model and tokenizer
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
+tokenizer.to('cuda')
 model = BartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
+model.to('cuda')
 
 @app.route('/api/greeting', methods=['GET'])
 def get_greeting():
